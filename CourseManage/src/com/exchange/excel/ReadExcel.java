@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.exchange.excel;
 
 import java.io.FileInputStream;
@@ -25,13 +23,13 @@ public class ReadExcel {
 		HSSFWorkbook hssfWorkbook = new HSSFWorkbook(is);
 		Course course = null;
 		List<Course> list = new ArrayList<Course>();
-		// Ñ­»·¹¤×÷±íSheet
+		// å¾ªçŽ¯å·¥ä½œè¡¨Sheet
 		for (int numSheet = 0; numSheet < hssfWorkbook.getNumberOfSheets(); numSheet++) {
 			HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(numSheet);
 			if (hssfSheet == null) {
 				continue;
 			}
-			// Ñ­»·ÐÐRow
+			// å¾ªçŽ¯è¡ŒRow
 			for (int rowNum = 3; rowNum <= hssfSheet.getLastRowNum(); rowNum++) {
 				HSSFRow hssfRow = hssfSheet.getRow(rowNum);
 				if (hssfRow != null) {
@@ -70,13 +68,13 @@ public class ReadExcel {
 	 @SuppressWarnings("static-access")
 	private String getValue(HSSFCell hssfCell) {
 	        if (hssfCell.getCellType() == hssfCell.CELL_TYPE_BOOLEAN) {
-	            // ·µ»Ø²¼¶ûÀàÐÍµÄÖµ
+	            // è¿”å›žå¸ƒå°”ç±»åž‹çš„å€¼
 	            return String.valueOf(hssfCell.getBooleanCellValue());
 	        } else if (hssfCell.getCellType() == hssfCell.CELL_TYPE_NUMERIC) {
-	            // ·µ»ØÊýÖµÀàÐÍµÄÖµ
+	            // è¿”å›žæ•°å€¼ç±»åž‹çš„å€¼
 	            return String.valueOf(hssfCell.getNumericCellValue());
 	        } else {
-	            // ·µ»Ø×Ö·û´®ÀàÐÍµÄÖµ
+	            // è¿”å›žå­—ç¬¦ä¸²ç±»åž‹çš„å€¼
 	            return String.valueOf(hssfCell.getStringCellValue());
 	        }
 	    }
